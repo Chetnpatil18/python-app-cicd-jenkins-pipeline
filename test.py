@@ -8,13 +8,12 @@ def test_hello():
     rv = client.get('/')
     assert rv.status_code == 200
 
-    # Extract <h1> content using regex
     message = rv.data.decode()
     start = re.search("<h1>", message).start()
     end = re.search("</h1>", message).start()
     message = message[start + 4:end]
 
-    assert message == "hello brother, Lets have some fun!!"
+    assert message == "hello dear, Lets have some fun!!"
 
 
 def test_name():
@@ -25,7 +24,6 @@ def test_name():
     rv = client.get(f'/{name}')
     assert rv.status_code == 200
 
-    # Extract <h1> content using regex
     message = rv.data.decode()
     start = re.search("<h1>", message).start()
     end = re.search("</h1>", message).start()
